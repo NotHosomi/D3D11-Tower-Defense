@@ -7,10 +7,7 @@
 
 
 
-SkinnedCube::SkinnedCube(Renderer& renderer, Vector3 pos, Vector3 rot, Vector3 scale, std::string texture) :
-	local_transform(DirectX::XMMatrixScaling(scale.x, scale.x, scale.x)*
-		DirectX::XMMatrixRotationRollPitchYaw(rot.y, rot.x, rot.z)*
-		DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z))
+SkinnedCube::SkinnedCube(Renderer& renderer, std::string texture)
 {
 	if (!checkStatics())
 	{
@@ -61,34 +58,4 @@ SkinnedCube::SkinnedCube(Renderer& renderer, Vector3 pos, Vector3 rot, Vector3 s
 	}
 
 	addBind(std::make_unique<TransformBuffer>(renderer, *this));
-}
-
-DirectX::XMMATRIX SkinnedCube::getXMTransform() const noexcept
-{
-	// replace with FromVector versions
-	return local_transform *
-		DirectX::XMMatrixScaling(x_scale, y_scale, z_scale) *
-		DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
-		DirectX::XMMatrixTranslation(x, y, z);
-}
-
-void SkinnedCube::setPos(Vector3 new_pos)
-{
-	x = new_pos.x;
-	y = new_pos.y;
-	z = new_pos.z;
-}
-
-void SkinnedCube::setRos(Vector3 new_rot)
-{
-	roll = new_rot.x;
-	pitch = new_rot.y;
-	yaw = new_rot.z;
-}
-
-void SkinnedCube::setScale(Vector3 new_scale)
-{
-	x_scale = new_scale.x;
-	y_scale = new_scale.y;
-	z_scale = new_scale.z;
 }

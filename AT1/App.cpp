@@ -14,6 +14,7 @@
 #include "Surface.h"
 #include "GDIPlusManager.h"
 #include "GameObjects.h"
+#include "Grid.h"
 
 GDIPlusManager gdipm;
 
@@ -88,7 +89,11 @@ App::App() :
 
 	_GD.game_objects = &game_objects;
 
-	debug_boi = new SkinnedCube(wnd.getRenderer(), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1), "Terrain");
+	debug_boi = new SkinnedCube(wnd.getRenderer(), "Terrain");
+	//debug_boi_2 = new Ball(wnd.getRenderer(), 10, 10, Vector3(2, 0, 0));
+
+	light.setPos(-5, 2, 10);
+	world = new Grid(wnd.getRenderer());
 }
 
 App::~App()
@@ -157,25 +162,29 @@ void App::tick()
 	wish_y *= _GD.dt * 10;
 	wish_z *= _GD.dt * 10;
 
-	// Render
-	wnd.getRenderer().wipe(0.07f, 0.0f, 0.12f);
-	cam.moveCam(wish_x, wish_y, wish_z);
-	wnd.getRenderer().setCamera(cam.getMatrix());
-	light.Bind(wnd.getRenderer(), cam.getMatrix());
-
-	for (auto& b : drawables)
-	{
-		b->update(_GD.dt);
-		b->draw(wnd.getRenderer());
-	}
 	for (auto& it : game_objects)
 	{
 		it->update(_GD);
 	}
 
+	// RENDER
+	wnd.getRenderer().wipe(0.07f, 0.0f, 0.12f);
+	cam.moveCam(wish_x, wish_y, wish_z);
+	wnd.getRenderer().setCamera(cam.getMatrix());
+	light.Bind(wnd.getRenderer(), cam.getMatrix());
+
+	// old
+	for (auto& b : drawables)
+	{
+		b->update(_GD.dt);
+		b->draw(wnd.getRenderer());
+	}
+
 	/// RENDER
-	terrain.draw(wnd.getRenderer());
+	//terrain.draw(wnd.getRenderer());
+	world.draw(wnd.getRenderer());
 	debug_boi->draw(wnd.getRenderer());
+	//debug_boi_2->draw(wnd.getRenderer());
 	for (auto& it : game_objects)
 	{
 		it->draw(&wnd.getRenderer());

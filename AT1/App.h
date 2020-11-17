@@ -6,6 +6,7 @@
 #include <vector>
 #include "GameData.h"
 #include "Sheet.h"
+#include "Grid.h"
 
 class App
 {
@@ -31,6 +32,8 @@ private:
 	// TODO: Switch with a list?
 	std::vector<class GameObject*> game_objects;
 	Sheet terrain;
+	Grid* world;
 	class SkinnedCube* debug_boi;
+	class Ball* debug_boi_2;
 	GameData _GD;
 };

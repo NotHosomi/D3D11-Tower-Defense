@@ -5,7 +5,7 @@
 class Enemy : public GameObject
 {
 public:
-	Enemy(Renderer& renderer, PathCorner* first_stop_target);
+	Enemy(Renderer& renderer, PathCorner* first_stop_target, Vector3 spawn_pos);
 	void update(float dt);//override
 	void damage(float amount);
 

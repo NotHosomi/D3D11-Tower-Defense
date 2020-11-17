@@ -5,8 +5,9 @@
 class PointLight
 {
 public:
-	PointLight(Renderer& gfx);
-	void Bind(Renderer& gfx, DirectX::FXMMATRIX view) const noexcept;
+	PointLight(Renderer& renderer);
+	void Bind(Renderer& renderer, DirectX::FXMMATRIX view) const noexcept;
+	void setPos(float x, float y, float z);
 private:
 	struct PointLightCBuf
 	{
@@ -18,7 +19,7 @@ private:
 		float attLin;
 		float attQuad;
 	};
-private:
-	PointLightCBuf cbData;
-	mutable PixelConstantBuffer<PointLightCBuf> cbuf;
+
+	PointLightCBuf constbuf_data;
+	mutable PixelConstantBuffer<PointLightCBuf> constbuf;
 };

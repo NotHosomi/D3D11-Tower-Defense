@@ -1,10 +1,12 @@
 #include "Enemy.h"
 #include <random>
 
-Enemy::Enemy(Renderer& renderer, PathCorner* first_stop_target) :
-	GameObject(renderer, Vector3(), Vector3(), Vector3(0.5, 0.5, 0.5), "hi")
+Enemy::Enemy(Renderer& renderer, PathCorner* first_stop_target, Vector3 spawn_pos)
 	//offset((float)rand() / RAND_MAX, (float)rand() / RAND_MAX, 0)
 {
+	model = new SkinnedCube(renderer, "Hi");
+	setPos(spawn_pos);
+
 	destination = first_stop_target;
 	current_health = max_health;
 }
@@ -31,7 +33,7 @@ void Enemy::damage(float amount)
 
 void Enemy::move(float dt)
 {
-	Vector3 dist = (destination->getPos() + offset) - position;
+	Vector3 dist = (destination->getPos() + offset) - getPos();
 	Vector3 dir = dist;
 	dir.normalise();
 	dir * speed * dt;

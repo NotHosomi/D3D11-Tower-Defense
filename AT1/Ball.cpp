@@ -3,25 +3,7 @@
 #include "Sphere.h"
 
 
-Ball::Ball(Renderer& renderer,
-	std::mt19937& rng,
-	std::uniform_real_distribution<float>& adist,
-	std::uniform_real_distribution<float>& ddist,
-	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist,
-	std::uniform_int_distribution<int>& longdist,
-	std::uniform_int_distribution<int>& latdist)
-	:
-	r(rdist(rng)),
-	droll(ddist(rng)),
-	dpitch(ddist(rng)),
-	dyaw(ddist(rng)),
-	dy(odist(rng)),
-	dx(odist(rng)),
-	dz(odist(rng)),
-	z(adist(rng)),
-	x(adist(rng)),
-	y(adist(rng))
+Ball::Ball(Renderer& renderer, int lati, int longi)
 {
 	namespace dx = DirectX;
 
@@ -71,7 +53,7 @@ Ball::Ball(Renderer& renderer,
 	{
 		dx::XMFLOAT3 pos;
 	};
-	auto model = Sphere::MakeTesselated<Vertex>(latdist(rng), longdist(rng));
+	auto model = Sphere::MakeTesselated<Vertex>(lati, longi);
 	// deform vertices of model by linear transformation
 	model.Transform(dx::XMMatrixScaling(1.0f, 1.0f, 1.0f));
 
@@ -80,21 +62,4 @@ Ball::Ball(Renderer& renderer,
 	addIndexBuffer(std::make_unique<IndexBuffer>(renderer, model.indices));
 
 	addBind(std::make_unique<TransformBuffer>(renderer, *this));
-}
-
-void Ball::update(float dt) noexcept
-{
-	roll += droll * dt;
-	pitch += dpitch * dt;
-	yaw += dyaw * dt;
-	x += dx * dt;
-	y += dy * dt;
-	z += dz * dt;
-}
-
-DirectX::XMMATRIX Ball::getXMTransform() const noexcept
-{
-	return DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
-		DirectX::XMMatrixTranslation(r, 0.0f, 0.0f) *
-		DirectX::XMMatrixRotationRollPitchYaw(x, y, z);
 }

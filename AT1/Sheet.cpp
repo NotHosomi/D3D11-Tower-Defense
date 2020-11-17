@@ -65,5 +65,5 @@ void Sheet::update(float dt) noexcept
 
 DirectX::XMMATRIX Sheet::getXMTransform() const noexcept
 {
-	return DirectX::XMMatrixScaling(width, height, 0.0f);
+	return DirectX::XMMatrixScaling(width, height, 1);
 }
