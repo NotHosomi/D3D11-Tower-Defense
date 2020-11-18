@@ -14,6 +14,8 @@ class Drawable
 public:
 	Drawable() = default;
 	Drawable(const Drawable&) = delete;
+	// move constructor for emplacing
+	Drawable(Drawable&& other) noexcept;
 	virtual ~Drawable() = default;
 
 	virtual DirectX::XMMATRIX getXMTransform() const noexcept;

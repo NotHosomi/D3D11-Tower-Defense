@@ -1,4 +1,5 @@
 #include "Grid.h"
+#include "Tile.h"
 
 Grid::Grid(Renderer& renderer)
 {
@@ -29,10 +30,10 @@ Grid::Grid(Renderer& renderer)
 		for (int y = 0; y < GRID_HEIGHT; ++y)
 		{
 			bool path = layout[x + y * GRID_WIDTH];
-			tiles.back().emplace_back(renderer, path ? "Path" : "Grass"); // TODO Cant copy these cunts
+			tiles.back().emplace_back(renderer, path ? "Path" : "Grass", 1, 1);
 			Vector3 pos;
-			pos.x = 2*(x - GRID_WIDTH / 2);
-			pos.y = 2*(y - GRID_HEIGHT / 2);
+			pos.x = 2*(x - GRID_WIDTH / 2.0f);
+			pos.y = 2*(y - GRID_HEIGHT / 2.0f);
 			tiles.back().back().setPos(pos);
 		}
 	}

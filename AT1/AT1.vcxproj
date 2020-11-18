@@ -173,7 +173,7 @@
     <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sampler.cpp" />
-    <ClCompile Include="Sheet.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="SkinnedCube.cpp" />
     <ClCompile Include="Surface.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -221,7 +221,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sampler.h" />
-    <ClInclude Include="Sheet.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="SkinnedCube.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Surface.h" />

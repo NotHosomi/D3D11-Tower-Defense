@@ -1,4 +1,4 @@
-#include "Sheet.h"
+#include "Tile.h"
 #include "Bindable_list.h"
 #include "Plane.h"
 #include "Surface.h"
@@ -6,8 +6,7 @@
 #include "Sampler.h"
 
 
-Sheet::Sheet(Renderer& renderer, std::string texture, float width, float height) :
-	width(width), height(height)
+Tile::Tile(Renderer& renderer, std::string texture)
 {
 	namespace dx = DirectX;
 
@@ -28,7 +27,6 @@ Sheet::Sheet(Renderer& renderer, std::string texture, float width, float height)
 		model.vertices[2].tex = { 0.0f,1.0f };
 		model.vertices[3].tex = { 1.0f,1.0f };
 
-		addStaticBind(std::make_unique<Texture>(renderer, Surface::FromFile("Images\\" + texture + ".png")));
 
 		addStaticBind(std::make_unique<VertexBuffer>(renderer, model.vertices));
 
@@ -56,14 +54,6 @@ Sheet::Sheet(Renderer& renderer, std::string texture, float width, float height)
 		fetchStaticIndices();
 	}
 
+	addBind(std::make_unique<Texture>(renderer, Surface::FromFile("Images\\" + texture + ".png")));
 	addBind(std::make_unique<TransformBuffer>(renderer, *this));
-}
-
-void Sheet::update(float dt) noexcept
-{
-}
-
-DirectX::XMMATRIX Sheet::getXMTransform() const noexcept
-{
-	return DirectX::XMMatrixScaling(width, height, 1);
 }

@@ -4,6 +4,14 @@
 #include <cassert>
 #include <typeinfo>
 
+Drawable::Drawable(Drawable&& other) noexcept :
+	binds(std::move(other.binds)),
+	local_transform(other.local_transform),
+	x(other.x), y(other.y), z(other.z),
+	roll(other.roll), pitch(other.pitch), yaw(other.yaw),
+	x_scale(other.x_scale), y_scale(other.y_scale), z_scale(other.z_scale)
+{}
+
 DirectX::XMMATRIX Drawable::getXMTransform() const noexcept
 {
 	return //local_transform *

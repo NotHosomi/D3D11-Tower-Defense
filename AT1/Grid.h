@@ -1,4 +1,5 @@
-#include "Sheet.h"
+#pragma once
+#include "Tile.h"
 
 
 class Grid
@@ -13,6 +14,6 @@ public:
 private:
 	static const int GRID_WIDTH = 20;
 	static const int GRID_HEIGHT = 15;
-	std::vector<std::vector<Sheet>> tiles;
+	std::vector<std::vector<Tile>> tiles; // TODO: make single dimension
 };
 

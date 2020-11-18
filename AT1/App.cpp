@@ -3,7 +3,6 @@
 #include "Cube.h"
 #include "Ball.h"
 #include "Pyramid.h"
-#include "Sheet.h"
 #include "SkinnedCube.h"
 #include "Cylinder.h"
 
@@ -20,8 +19,7 @@ GDIPlusManager gdipm;
 
 App::App() :
 	wnd(800, 600, "DemoWindow"),
-	light(wnd.getRenderer()),
-	terrain(wnd.getRenderer(), "Terrain", 20, 15)
+	light(wnd.getRenderer())
 {
 	class Factory
 	{
@@ -89,8 +87,10 @@ App::App() :
 
 	_GD.game_objects = &game_objects;
 
-	debug_boi = new SkinnedCube(wnd.getRenderer(), "Terrain");
-	//debug_boi_2 = new Ball(wnd.getRenderer(), 10, 10, Vector3(2, 0, 0));
+	//debug_boi = new SkinnedCube(wnd.getRenderer(), "Terrain");
+
+	debug_boi_2 = new Ball(wnd.getRenderer(), 10, 10);
+	debug_boi_2->setPos(Vector3(7, 5, 0));
 
 	light.setPos(-5, 2, 10);
 	world = new Grid(wnd.getRenderer());
@@ -181,10 +181,9 @@ void App::tick()
 	}
 
 	/// RENDER
-	//terrain.draw(wnd.getRenderer());
-	world.draw(wnd.getRenderer());
-	debug_boi->draw(wnd.getRenderer());
-	//debug_boi_2->draw(wnd.getRenderer());
+	world->draw(wnd.getRenderer());
+	//debug_boi->draw(wnd.getRenderer());
+	debug_boi_2->draw(wnd.getRenderer());
 	for (auto& it : game_objects)
 	{
 		it->draw(&wnd.getRenderer());
