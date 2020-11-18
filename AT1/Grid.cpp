@@ -30,7 +30,7 @@ Grid::Grid(Renderer& renderer)
 		for (int y = 0; y < GRID_HEIGHT; ++y)
 		{
 			bool path = layout[x + y * GRID_WIDTH];
-			tiles.back().emplace_back(renderer, path ? "Path" : "Grass", 1, 1);
+			tiles.back().emplace_back(renderer, path ? "Path" : "Grass");
 			Vector3 pos;
 			pos.x = 2*(x - GRID_WIDTH / 2.0f);
 			pos.y = 2*(y - GRID_HEIGHT / 2.0f);

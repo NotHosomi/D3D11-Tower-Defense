@@ -10,4 +10,6 @@ public:
 	void update(float dt) noexcept override {};
 private:
 	static constexpr float TILE_DIMS = 1;
+
+	// Tower* occupier = null;
 };
