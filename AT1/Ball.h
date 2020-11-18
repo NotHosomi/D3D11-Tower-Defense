@@ -7,6 +7,5 @@ class Ball : public Primitive<Ball>
 {
 public:
 	Ball(Renderer& renderer, int lati, int longi);
-	//DirectX::XMMATRIX getXMTransform() const noexcept override;
 private:
 };

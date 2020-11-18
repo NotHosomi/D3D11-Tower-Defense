@@ -1,5 +1,7 @@
 #include "GameObject.h"
-#include "Ball.h"
+
+
+std::vector<GameObject*> GameObject::destroy_list = std::vector<GameObject*>();
 
 GameObject::~GameObject()
 {
@@ -41,7 +43,10 @@ Vector3 GameObject::getScale()
 	return scale;
 }
 
-//void GameObject::destroy(GameObject* go)
-//{
-//	destroy_list.emplace_back(go);
-//}
+void GameObject::destroy(GameObject* go)
+{
+	if (!std::count(destroy_list.begin(), destroy_list.end(), go))
+	{
+		destroy_list.emplace_back(go);
+	}
+}

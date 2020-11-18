@@ -6,7 +6,7 @@ class Enemy : public GameObject
 {
 public:
 	Enemy(Renderer& renderer, PathCorner* first_stop_target, Vector3 spawn_pos);
-	void update(float dt);//override
+	void update(GameData& _GD) override;//override
 	void damage(float amount);
 
 private:
@@ -16,7 +16,7 @@ private:
 
 	PathCorner* destination; // Don't need a destructor, we don't own this
 
-	float speed = 1;
+	float SPEED = 3;
 	int max_health = 100;
 	int current_health;
 	// TODO: Enum status effects

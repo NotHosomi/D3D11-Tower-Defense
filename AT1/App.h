@@ -32,7 +32,5 @@ private:
 	// TODO: Switch with a list?
 	std::vector<class GameObject*> game_objects;
 	Grid* world;
-	//class SkinnedCube* debug_boi;
-	class Ball* debug_boi_2;
 	GameData _GD;
 };

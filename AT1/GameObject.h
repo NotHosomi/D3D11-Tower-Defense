@@ -23,17 +23,18 @@ public:
 	Vector3 getRot();
 	void setScale(Vector3 pos);
 	Vector3 getScale();
+
+	static std::vector<GameObject*>& fetchDestroyList() { return destroy_list; };
 protected:
 	// statics
-	//static void destroy(GameObject* go);
-	//static std::vector<GameObject*> destroy_list;
-	//static std::vector<GameObject*>& fetchDestroyList() { return destroy_list; };
+	static void destroy(GameObject* go);
 
 
 	Drawable* model;
 	// TODO: replace with
 	//std::vector<SkinnedCube> model;
 private:
+	static std::vector<GameObject*> destroy_list;
 	Vector3 position;
 	Vector3 rotation;
 	Vector3 scale;

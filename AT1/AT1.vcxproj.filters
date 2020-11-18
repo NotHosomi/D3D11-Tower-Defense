@@ -16,40 +16,46 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{fc8456eb-39ac-4497-a7d0-23b3d27eb3d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Bindable">
-      <UniqueIdentifier>{89edd9e6-bbd9-4c97-aead-18a339826dc3}</UniqueIdentifier>
+    <Filter Include="Source Files\Renderering">
+      <UniqueIdentifier>{fcf09ec1-2fc5-44e7-b46f-642c41a694c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Bindables">
-      <UniqueIdentifier>{edc6f686-033d-4936-a574-86f4c6996d4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Drawable">
-      <UniqueIdentifier>{c6e9725f-dcaf-4967-afbf-c885a960a375}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Drawable">
-      <UniqueIdentifier>{21975651-b58f-4fca-bfde-780d38d96daa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Primitives">
-      <UniqueIdentifier>{f120fefa-71a6-43ac-becb-cf2f754fe545}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Primitives">
-      <UniqueIdentifier>{0cc5fe10-563f-457a-8c1b-7cba163a7a9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Environment">
-      <UniqueIdentifier>{c3e3311a-8a27-4453-8573-91023319548b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Environment">
-      <UniqueIdentifier>{add6e4e4-6109-42dc-8682-1dcd8c70e8fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\TextureLoading">
+    <Filter Include="Source Files\Renderering\TextureLoading">
       <UniqueIdentifier>{253a9912-e6f5-4f60-9a06-9a1b0a02388c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\TextureLoading">
-      <UniqueIdentifier>{cf07e7ff-eaee-4ae1-81d2-cfa4df46ba59}</UniqueIdentifier>
+    <Filter Include="Source Files\Renderering\Environment">
+      <UniqueIdentifier>{c3e3311a-8a27-4453-8573-91023319548b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameObjects">
+    <Filter Include="Source Files\Renderering\Bindables">
+      <UniqueIdentifier>{edc6f686-033d-4936-a574-86f4c6996d4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderering\Drawable">
+      <UniqueIdentifier>{21975651-b58f-4fca-bfde-780d38d96daa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderering\Primitives">
+      <UniqueIdentifier>{0cc5fe10-563f-457a-8c1b-7cba163a7a9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
       <UniqueIdentifier>{ee9dfe37-5b05-407f-b4ca-e570abb022c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameObjects">
+    <Filter Include="Header Files\Renderering">
+      <UniqueIdentifier>{4598d720-5c9a-4a20-ae8c-66f826f323dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderering\TextureLoading">
+      <UniqueIdentifier>{cf07e7ff-eaee-4ae1-81d2-cfa4df46ba59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderering\Primitives">
+      <UniqueIdentifier>{f120fefa-71a6-43ac-becb-cf2f754fe545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderering\Environment">
+      <UniqueIdentifier>{add6e4e4-6109-42dc-8682-1dcd8c70e8fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderering\Drawable">
+      <UniqueIdentifier>{c6e9725f-dcaf-4967-afbf-c885a960a375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderering\Bindable">
+      <UniqueIdentifier>{89edd9e6-bbd9-4c97-aead-18a339826dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
       <UniqueIdentifier>{b75f20c6-3c53-4453-8c72-0ae708c3521d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -58,106 +64,106 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bindable.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="IndexBuffer.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="InputLayout.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="PixelShader.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="Topology.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="VertexBuffer.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="VertexShader.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="Drawable.cpp">
-      <Filter>Source Files\Drawable</Filter>
+      <Filter>Source Files\Renderering\Drawable</Filter>
     </ClCompile>
     <ClCompile Include="TransformBuffer.cpp">
-      <Filter>Source Files\Bindables</Filter>
+      <Filter>Source Files\Renderering\Bindables</Filter>
     </ClCompile>
     <ClCompile Include="Pyramid.cpp">
-      <Filter>Source Files\Primitives</Filter>
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="MyException.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
-      <Filter>Source Files\Environment</Filter>
+      <Filter>Source Files\Renderering\Environment</Filter>
     </ClCompile>
     <ClCompile Include="Surface.cpp">
-      <Filter>Source Files\TextureLoading</Filter>
+      <Filter>Source Files\Renderering\TextureLoading</Filter>
     </ClCompile>
     <ClCompile Include="GDIPlusManager.cpp">
-      <Filter>Source Files\TextureLoading</Filter>
+      <Filter>Source Files\Renderering\TextureLoading</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\TextureLoading</Filter>
+      <Filter>Source Files\Renderering\TextureLoading</Filter>
     </ClCompile>
     <ClCompile Include="Sampler.cpp">
-      <Filter>Source Files\TextureLoading</Filter>
+      <Filter>Source Files\Renderering\TextureLoading</Filter>
     </ClCompile>
     <ClCompile Include="SkinnedCube.cpp">
-      <Filter>Source Files\Primitives</Filter>
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
-      <Filter>Source Files\Primitives</Filter>
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="PathCorner.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ball.cpp">
-      <Filter>Source Files\Primitives</Filter>
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="Cylinder.cpp">
-      <Filter>Source Files\Primitives</Filter>
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="PointLight.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Marker.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
-      <Filter>Source Files\Primitives</Filter>
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -165,145 +171,145 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bindable.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="Bindable_list.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="IndexBuffer.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="InputLayout.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="PixelShader.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="Topology.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="VertexBuffer.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="VertexShader.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="Drawable.h">
-      <Filter>Header Files\Drawable</Filter>
+      <Filter>Header Files\Renderering\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="TransformBuffer.h">
-      <Filter>Header Files\Bindable</Filter>
+      <Filter>Header Files\Renderering\Bindable</Filter>
     </ClInclude>
     <ClInclude Include="Primitive.h">
-      <Filter>Header Files\Drawable</Filter>
+      <Filter>Header Files\Renderering\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="IndexedTriangleList.h">
-      <Filter>Header Files\Drawable</Filter>
+      <Filter>Header Files\Renderering\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="Cone.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Plane.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Pyramid.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Window.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Maths.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Mouse.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="MyException.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>Header Files\Environment</Filter>
+      <Filter>Header Files\Renderering\Environment</Filter>
     </ClInclude>
     <ClInclude Include="Surface.h">
-      <Filter>Header Files\TextureLoading</Filter>
+      <Filter>Header Files\Renderering\TextureLoading</Filter>
     </ClInclude>
     <ClInclude Include="GDIPlusManager.h">
-      <Filter>Header Files\TextureLoading</Filter>
+      <Filter>Header Files\Renderering\TextureLoading</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Header Files\TextureLoading</Filter>
+      <Filter>Header Files\Renderering\TextureLoading</Filter>
     </ClInclude>
     <ClInclude Include="Sampler.h">
-      <Filter>Header Files\TextureLoading</Filter>
+      <Filter>Header Files\Renderering\TextureLoading</Filter>
     </ClInclude>
     <ClInclude Include="SkinnedCube.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="CubeBase.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="PathCorner.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ball.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="TestObject.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Prism.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="Cylinder.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="PointLight.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="GameObjects.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="GameData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Marker.h">
-      <Filter>Header Files\GameObjects</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
-      <Filter>Header Files\Primitives</Filter>
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

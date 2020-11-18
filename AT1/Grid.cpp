@@ -6,19 +6,19 @@ Grid::Grid(Renderer& renderer)
 	int layout[] =
 	{
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
-		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
-		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
-		1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0,
-		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-		0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
-		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
 		0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
+		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+		0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0,
+		1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
 
@@ -32,11 +32,26 @@ Grid::Grid(Renderer& renderer)
 			bool path = layout[x + y * GRID_WIDTH];
 			tiles.back().emplace_back(renderer, path ? "Path" : "Grass");
 			Vector3 pos;
-			pos.x = 2*(x - GRID_WIDTH / 2.0f);
-			pos.y = 2*(y - GRID_HEIGHT / 2.0f);
+			pos.x = x;
+			pos.y = y;
 			tiles.back().back().setPos(pos);
 		}
 	}
+
+	waypoints.reserve(13); // VERY IMPORTANT
+	waypoints.emplace_back(Vector3(18, 7, 0), nullptr);
+	waypoints.emplace_back(Vector3(16, 7, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(16, 11, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(13, 11, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(13, 3, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(17, 3, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(17, 1, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(2, 1, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(2, 5, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(9, 5, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(9, 13, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(3, 13, 0), &waypoints.back());
+	waypoints.emplace_back(Vector3(3, 8, 0), &waypoints.back());
 }
 
 void Grid::draw(Renderer& renderer)
@@ -48,4 +63,9 @@ void Grid::draw(Renderer& renderer)
 			tile.draw(renderer);
 		}
 	}
+}
+
+PathCorner* Grid::getFirstStopTarget()
+{
+	return &waypoints.back();
 }
