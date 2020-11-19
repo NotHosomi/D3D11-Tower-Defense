@@ -27,7 +27,7 @@ App::App() :
 
 	_GD.game_objects = &game_objects;
 
-	light.setPos(0, 1, 1);
+	light.setPos(10, 10, 3);
 	world = new Grid(wnd.getRenderer());
 
 	Enemy* debug_boi = new Enemy(wnd.getRenderer(), world->getFirstStopTarget(), Vector3(-1, 8, 0));

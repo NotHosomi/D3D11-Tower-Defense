@@ -2,7 +2,7 @@
 #include <random>
 
 Enemy::Enemy(Renderer& renderer, PathCorner* first_stop_target, Vector3 spawn_pos) :
-	offset(Vector3(0.5 * rand() / (float)RAND_MAX - 0.5, 0.5 * rand() / (float)RAND_MAX - 0.5, 0))
+	offset(Vector3(0.5 * rand() / (float)RAND_MAX - 0.25, 0.5 * rand() / (float)RAND_MAX - 0.25, 0))
 {
 	model = new SkinnedCube(renderer, "Hi");
 	model->setScale(Vector3(0.5f, 0.5f, 0.5f));
