@@ -6,7 +6,7 @@ class Enemy : public GameObject
 {
 public:
 	Enemy(Renderer& renderer, PathCorner* first_stop_target, Vector3 spawn_pos);
-	void update(GameData& _GD) override;//override
+	void update(GameData* _GD) override;//override
 	void damage(float amount);
 
 private:

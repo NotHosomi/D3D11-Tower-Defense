@@ -10,9 +10,9 @@ Enemy::Enemy(Renderer& renderer, PathCorner* first_stop_target, Vector3 spawn_po
 	current_health = max_health;
 }
 
-void Enemy::update(GameData& _GD)
+void Enemy::update(GameData* _GD)
 {
-	move(_GD.dt);
+	move(_GD->dt);
 }
 
 void Enemy::damage(float amount)

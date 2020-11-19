@@ -22,59 +22,6 @@ App::App() :
 	wnd(800, 600, "DemoWindow"),
 	light(wnd.getRenderer())
 {
-	//class Factory
-	//{
-	//public:
-	//	Factory(Renderer& renderer)
-	//		:
-	//		renderer(renderer)
-	//	{}
-	//	std::unique_ptr<Drawable> operator()()
-	//	{
-	//		switch (typedist(rng))
-	//		{
-	//		case 1:
-	//		{
-	//			const DirectX::XMFLOAT3 mat = { cdist(rng),cdist(rng),cdist(rng) };
-	//			return std::make_unique<Cube>(
-	//				renderer, rng, adist, ddist,
-	//				odist, rdist, bdist, mat
-	//				);
-	//		}
-	//		case 2:
-	//			return std::make_unique<Cylinder>(
-	//				renderer, rng, adist, ddist, odist,
-	//				rdist, bdist, tdist
-	//				);
-	//		case 3:
-	//			return std::make_unique<Pyramid>(
-	//				renderer, rng, adist, ddist, odist,
-	//				rdist, tdist
-	//				);
-	//		default:
-	//			assert(false && "bad drawable type in factory");
-	//			return {};
-	//		}
-	//	}
-	//private:
-	//	Renderer& renderer;
-	//	std::mt19937 rng{ std::random_device{}() };
-	//	std::uniform_int_distribution<int> typedist{ 1,3 };
-	//	std::uniform_real_distribution<float> adist{ 0.0f,PI * 2.0f };
-	//	std::uniform_real_distribution<float> ddist{ 0.0f,PI * 0.5f };
-	//	std::uniform_real_distribution<float> odist{ 0.0f,PI * 0.08f };
-	//	std::uniform_real_distribution<float> rdist{ 6.0f,20.0f };
-	//	std::uniform_real_distribution<float> bdist{ 0.4f,3.0f };
-	//	std::uniform_real_distribution<float> cdist{ 0.0f,1.0f };
-	//	std::uniform_int_distribution<int> latdist{ 5,20 };
-	//	std::uniform_int_distribution<int> longdist{ 10,40 };
-	//	std::uniform_int_distribution<int> tdist{ 3,30 };
-	//};
-	//
-	//Factory f(wnd.getRenderer());
-	//drawables.reserve(50);
-	//std::generate_n(std::back_inserter(drawables), 50, f);
-
 	wnd.getRenderer().setProjection(DirectX::XMMatrixPerspectiveLH(1.0f, 3.0f / 4.0f, 0.5f, 40.0f));
 	wnd.getRenderer().setCamera(DirectX::XMMatrixTranslation(0.0f, 0.0f, 20.0f));
 
@@ -82,30 +29,6 @@ App::App() :
 
 	light.setPos(0, 1, 1);
 	world = new Grid(wnd.getRenderer());
-
-
-	//Marker* m = new Marker(wnd.getRenderer(), Vector3(16, 7, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(16, 11, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(13, 11, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(13, 3, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(17, 3, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(17, 1, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(2, 1, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(2, 5, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(9, 13, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(3, 13, 0));
-	//game_objects.emplace_back(m);
-	//m = new Marker(wnd.getRenderer(), Vector3(3, 8, 0));
-	//game_objects.emplace_back(m);
 
 	Enemy* debug_boi = new Enemy(wnd.getRenderer(), world->getFirstStopTarget(), Vector3(1, 8, 0));
 	game_objects.emplace_back(debug_boi);
@@ -188,7 +111,7 @@ void App::tick()
 
 	for (auto& it : game_objects)
 	{
-		it->update(_GD);
+		it->update(&_GD);
 	}
 
 	// Delete objects listed for deletion
@@ -208,23 +131,17 @@ void App::tick()
 			}
 		}
 	}
-	//while (m_GD->creation_list.size())
-	//{
-	//	GameObject2D* ptr = m_GD->creation_list.back();
-	//	m_GD->creation_list.pop_back();
-	//	m_GameObjects2D.emplace_back(ptr);
-	//}
+	std::vector<GameObject*>& c_list = GameObject::fetchDestroyList();
+	while (c_list.size())
+	{
+		GameObject* ptr = c_list.back();
+		c_list.pop_back();
+		game_objects.emplace_back(ptr);
+	}
 
 	// RENDER
 	wnd.getRenderer().setCamera(cam.getMatrix());
 	light.Bind(wnd.getRenderer(), cam.getMatrix());
-
-	// old
-	for (auto& b : drawables)
-	{
-		b->update(_GD.dt);
-		b->draw(wnd.getRenderer());
-	}
 
 	/// RENDER
 	world->draw(wnd.getRenderer());

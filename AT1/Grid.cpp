@@ -1,5 +1,7 @@
 #include "Grid.h"
 #include "Tile.h"
+#include "EnemySpawner.h"
+#include "GameObject.h"
 
 Grid::Grid(Renderer& renderer)
 {
@@ -10,7 +12,7 @@ Grid::Grid(Renderer& renderer)
 		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
 		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0,
 		0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-		0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
 		0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0,
 		1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
@@ -52,6 +54,11 @@ Grid::Grid(Renderer& renderer)
 	waypoints.emplace_back(Vector3(9, 13, 0), &waypoints.back());
 	waypoints.emplace_back(Vector3(3, 13, 0), &waypoints.back());
 	waypoints.emplace_back(Vector3(3, 8, 0), &waypoints.back());
+
+	EnemySpawner* e = new EnemySpawner(&waypoints.back());
+	GameObject::create(e);
+	e = new EnemySpawner(&(*(waypoints.rbegin() + 4)));
+	GameObject::create(e);
 }
 
 void Grid::draw(Renderer& renderer)

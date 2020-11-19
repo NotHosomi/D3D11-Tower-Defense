@@ -2,6 +2,7 @@
 
 
 std::vector<GameObject*> GameObject::destroy_list = std::vector<GameObject*>();
+std::vector<GameObject*> GameObject::create_list = std::vector<GameObject*>();
 
 GameObject::~GameObject()
 {
@@ -11,7 +12,10 @@ GameObject::~GameObject()
 
 void GameObject::draw(Renderer* renderer)
 {
-	model->draw(*renderer);
+	if (model != nullptr)
+	{
+		model->draw(*renderer);
+	}
 }
 
 // internal transform controls
@@ -48,5 +52,13 @@ void GameObject::destroy(GameObject* go)
 	if (!std::count(destroy_list.begin(), destroy_list.end(), go))
 	{
 		destroy_list.emplace_back(go);
+	}
+}
+
+void GameObject::create(GameObject* go)
+{
+	if (!std::count(destroy_list.begin(), destroy_list.end(), go))
+	{
+		create_list.emplace_back(go);
 	}
 }

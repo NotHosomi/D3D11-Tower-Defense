@@ -27,8 +27,6 @@ private:
 	// Just the one light will suffice for now 
 	PointLight light;
 
-	// outdated
-	std::vector<std::unique_ptr<class Drawable>> drawables;
 	// TODO: Switch with a list?
 	std::vector<class GameObject*> game_objects;
 	Grid* world;
