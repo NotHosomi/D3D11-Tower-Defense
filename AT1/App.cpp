@@ -30,7 +30,7 @@ App::App() :
 	light.setPos(0, 1, 1);
 	world = new Grid(wnd.getRenderer());
 
-	Enemy* debug_boi = new Enemy(wnd.getRenderer(), world->getFirstStopTarget(), Vector3(1, 8, 0));
+	Enemy* debug_boi = new Enemy(wnd.getRenderer(), world->getFirstStopTarget(), Vector3(-1, 8, 0));
 	game_objects.emplace_back(debug_boi);
 }
 
@@ -131,7 +131,7 @@ void App::tick()
 			}
 		}
 	}
-	std::vector<GameObject*>& c_list = GameObject::fetchDestroyList();
+	std::vector<GameObject*>& c_list = GameObject::fetchCreateList();
 	while (c_list.size())
 	{
 		GameObject* ptr = c_list.back();

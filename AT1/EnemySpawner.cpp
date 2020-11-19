@@ -11,13 +11,13 @@ EnemySpawner::EnemySpawner(PathCorner* first_stop_target)
 
 	// intentional constant seed, for testing purposes
 	srand(0);
-	setTimer();
+	spawn_timer = 1;
 }
 
 void EnemySpawner::update(GameData* _GD)
 {
 	spawn_timer -= _GD->dt;
-	if (spawn_timer == 0)
+	if (spawn_timer <= 0)
 	{
 		spawn(_GD);
 		setTimer();
@@ -32,6 +32,6 @@ void EnemySpawner::spawn(GameData* _GD)
 
 void EnemySpawner::setTimer()
 {
-	spawn_timer = rand() / RAND_MAX;
+	spawn_timer = rand() / (float)RAND_MAX;
 	spawn_timer = spawn_timer * (MAX_TIMER - MIN_TIMER) + MIN_TIMER;
 }
