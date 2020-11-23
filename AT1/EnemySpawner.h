@@ -10,7 +10,7 @@ public:
 
 	void update(GameData* _GD) override;
 private:
-	const float MAX_TIMER = 1;
+	const float MAX_TIMER = 0.7;
 	const float MIN_TIMER = 0.1f;
 	float spawn_timer;
 

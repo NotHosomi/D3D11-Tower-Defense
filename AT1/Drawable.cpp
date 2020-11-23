@@ -14,7 +14,7 @@ Drawable::Drawable(Drawable&& other) noexcept :
 
 DirectX::XMMATRIX Drawable::getXMTransform() const noexcept
 {
-	return //local_transform *
+	return local_transform *
 		DirectX::XMMatrixScaling(x_scale, y_scale, z_scale) *
 		DirectX::XMMatrixRotationRollPitchYaw(pitch, yaw, roll) *
 		DirectX::XMMatrixTranslation(x, y, z);
@@ -53,7 +53,7 @@ void Drawable::setPos(Vector3 new_pos)
 	z = new_pos.z;
 }
 
-void Drawable::setRos(Vector3 new_rot)
+void Drawable::setRot(Vector3 new_rot)
 {
 	roll = new_rot.x;
 	pitch = new_rot.y;

@@ -15,13 +15,13 @@ public:
 	GameObject& operator= (const GameObject&) = delete;
 
 	virtual void update(GameData* _GD) = 0;
-	void draw(Renderer* renderer);
+	virtual void draw(Renderer* renderer);
 
 	void setPos(Vector3 pos);
 	Vector3 getPos();
-	void setRot(Vector3 pos);
+	void setRot(Vector3 rot);
 	Vector3 getRot();
-	void setScale(Vector3 pos);
+	void setScale(Vector3 scale);
 	Vector3 getScale();
 
 	static void destroy(GameObject* go);

@@ -26,7 +26,8 @@ void EnemySpawner::update(GameData* _GD)
 
 void EnemySpawner::spawn(GameData* _GD)
 {
-	Enemy* new_enemy = new Enemy(*_GD->renderer, first_target, spawn_pos);
+	Enemy::EnemyType type = static_cast<Enemy::EnemyType>(rand() % 5);
+	Enemy* new_enemy = new Enemy(*_GD->renderer, first_target, spawn_pos, type);
 	GameObject::create(new_enemy);
 }
 

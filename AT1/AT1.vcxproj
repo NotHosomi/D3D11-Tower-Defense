@@ -181,6 +181,9 @@
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Topology.cpp" />
     <ClCompile Include="TransformBuffer.cpp" />
+    <ClCompile Include="Turret.cpp" />
+    <ClCompile Include="TurretGun.cpp" />
+    <ClCompile Include="TurretLaser.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="VertexShader.cpp" />
@@ -232,6 +235,9 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Topology.h" />
     <ClInclude Include="TransformBuffer.h" />
+    <ClInclude Include="Turret.h" />
+    <ClInclude Include="TurretGun.h" />
+    <ClInclude Include="TurretLaser.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexShader.h" />

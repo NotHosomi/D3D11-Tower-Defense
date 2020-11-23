@@ -30,8 +30,8 @@ Vector3 GameObject::getPos()
 }
 void GameObject::setRot(Vector3 rot)
 {
-	position = rot;
-	model->setRos(rot);
+	rotation = rot;
+	model->setRot(rot);
 }
 Vector3 GameObject::getRot()
 {
@@ -39,7 +39,7 @@ Vector3 GameObject::getRot()
 }
 void GameObject::setScale(Vector3 scale)
 {
-	position = scale;
+	this->scale = scale;
 	model->setScale(scale);
 }
 Vector3 GameObject::getScale()

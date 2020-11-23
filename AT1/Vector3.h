@@ -17,6 +17,9 @@ public:
 	bool operator==(const Vector3& operand);
 	void normalise();
 	float magnitude();
+	
+	float dot(const Vector3& a, const Vector3& b);
+	Vector3 cross(const Vector3& a, const Vector3& b);
 
 	// data
 	float x = 0;

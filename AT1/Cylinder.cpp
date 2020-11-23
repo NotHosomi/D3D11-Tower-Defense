@@ -2,18 +2,20 @@
 #include "Prism.h"
 #include "Bindable_list.h"
 
-Cylinder::Cylinder(Renderer& renderer, std::mt19937& rng,
-	std::uniform_real_distribution<float>& adist,
-	std::uniform_real_distribution<float>& ddist,
-	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist,
-	std::uniform_real_distribution<float>& bdist,
-	std::uniform_int_distribution<int>& tdist)
-	:
-	TestObject(renderer, rng, adist, ddist, odist, rdist)
+Cylinder::Cylinder(Renderer& renderer)
 {
 	if (!checkStatics())
 	{
+		// Generate geometry per-instance, non-static
+		struct Vertex
+		{
+			DirectX::XMFLOAT3 pos;
+			DirectX::XMFLOAT3 n;
+		};
+		const auto model = Prism::MakeTesselatedIndependentCapNormals<Vertex>(16);
+		addStaticBind(std::make_unique<VertexBuffer>(renderer, model.vertices));
+		addStaticIndexBuffer(std::make_unique<IndexBuffer>(renderer, model.indices));
+
 		auto pvs = std::make_unique<VertexShader>(renderer, L"PhongVS.cso");
 		auto pvsbc = pvs->GetBytecode();
 		addStaticBind(std::move(pvs));
@@ -43,16 +45,6 @@ Cylinder::Cylinder(Renderer& renderer, std::mt19937& rng,
 		} matConst;
 		addStaticBind(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(renderer, matConst, 1u));
 	}
-
-	// Generate geometry per-instance, non-static
-	struct Vertex
-	{
-		DirectX::XMFLOAT3 pos;
-		DirectX::XMFLOAT3 n;
-	};
-	const auto model = Prism::MakeTesselatedIndependentCapNormals<Vertex>(tdist(rng));
-	addBind(std::make_unique<VertexBuffer>(renderer, model.vertices));
-	addIndexBuffer(std::make_unique<IndexBuffer>(renderer, model.indices));
 
 	addBind(std::make_unique<TransformBuffer>(renderer, *this));
 }

@@ -28,7 +28,7 @@ public:
 
 	// parent GameObject interface
 	void setPos(Vector3 new_pos);
-	void setRos(Vector3 new_rot);
+	void setRot(Vector3 new_rot);
 	void setScale(Vector3 new_scale);
 private:
 	virtual const std::vector<std::unique_ptr<Bindable>>& getStaticBinds() const noexcept = 0; // Disable pure when meshes are added
@@ -37,6 +37,7 @@ private:
 
 	const DirectX::XMMATRIX local_transform = DirectX::XMMatrixScaling(1, 1, 1);
 	// parent transform
+	// TODO: Convert to XMVECTORs
 	float x = 0;
 	float y = 0;
 	float z = 0;

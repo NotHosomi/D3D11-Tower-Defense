@@ -30,7 +30,17 @@ App::App() :
 	light.setPos(10, 10, 3);
 	world = new Grid(wnd.getRenderer());
 
-	Enemy* debug_boi = new Enemy(wnd.getRenderer(), world->getFirstStopTarget(), Vector3(-1, 8, 0));
+	Turret* debug_boi = new TurretGun(wnd.getRenderer(), Vector3(4, 4, 0));
+	game_objects.emplace_back(debug_boi);
+	debug_boi = new TurretGun(wnd.getRenderer(), Vector3(3, 3, 0));
+	game_objects.emplace_back(debug_boi);
+	debug_boi = new TurretGun(wnd.getRenderer(), Vector3(4, 2, 0));
+	game_objects.emplace_back(debug_boi);
+	debug_boi = new TurretGun(wnd.getRenderer(), Vector3(15, 5, 0));
+	game_objects.emplace_back(debug_boi);
+	debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(7, 4, 0));
+	game_objects.emplace_back(debug_boi);
+	debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(15, 2, 0));
 	game_objects.emplace_back(debug_boi);
 }
 
@@ -67,7 +77,6 @@ int App::run()
 void App::tick()
 {
 	_GD.dt = timer.mark();
-	wnd.getRenderer().wipe(0.07f, 0.0f, 0.12f);
 
 	//Keyboard::Event e = wnd.kbd.readKey();
 	//if (e.IsPress() && e.GetCode() == 'A')
@@ -76,7 +85,8 @@ void App::tick()
 	//	//std::generate_n(std::back_inserter(drawables), 1, f);
 	//}
 
-	// camera move
+#pragma region lazy cam
+
 	float wish_y = 0;
 	float wish_x = 0;
 	float wish_z = 0;
@@ -108,7 +118,9 @@ void App::tick()
 	wish_y *= _GD.dt * 10;
 	wish_z *= _GD.dt * 10;
 	cam.moveCam(wish_x, wish_y, wish_z);
+#pragma endregion
 
+	// UPDATE
 	for (auto& it : game_objects)
 	{
 		it->update(&_GD);
@@ -140,10 +152,9 @@ void App::tick()
 	}
 
 	// RENDER
+	wnd.getRenderer().wipe(0.07f, 0.0f, 0.12f);
 	wnd.getRenderer().setCamera(cam.getMatrix());
 	light.Bind(wnd.getRenderer(), cam.getMatrix());
-
-	/// RENDER
 	world->draw(wnd.getRenderer());
 	for (auto& it : game_objects)
 	{
