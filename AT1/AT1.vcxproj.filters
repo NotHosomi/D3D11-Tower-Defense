@@ -129,9 +129,6 @@
     <ClCompile Include="SkinnedCube.cpp">
       <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Source Files\Renderering\Primitives</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -178,7 +175,13 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Picker.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Trace.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnlitCube.cpp">
+      <Filter>Source Files\Renderering\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +278,6 @@
     <ClInclude Include="SkinnedCube.h">
       <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
-    <ClInclude Include="Cube.h">
-      <Filter>Header Files\Renderering\Primitives</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
@@ -339,7 +339,13 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Picker.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Trace.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnlitCube.h">
+      <Filter>Header Files\Renderering\Primitives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -353,12 +359,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="ColourIndexPS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
-    <FxCompile Include="ColourIndexVS.hlsl">
-      <Filter>Shaders</Filter>
-    </FxCompile>
     <FxCompile Include="TextureVS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
@@ -390,6 +390,12 @@
       <Filter>Shaders</Filter>
     </FxCompile>
     <FxCompile Include="TexturedPhongPS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="ColourPS.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="ColourVS.hlsl">
       <Filter>Shaders</Filter>
     </FxCompile>
   </ItemGroup>

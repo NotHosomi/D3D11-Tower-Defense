@@ -1,6 +1,6 @@
 #include "App.h"
 
-#include "Cube.h"
+#include "UnlitCube.h"
 #include "Ball.h"
 #include "Pyramid.h"
 #include "SkinnedCube.h"
@@ -33,20 +33,11 @@ App::App() :
 	world = new Grid(wnd.getRenderer());
 	_GD.world = world;
 
-	GameObject* debug_boi;// = new TurretGun(wnd.getRenderer(), Vector3(4, 4, 0));
-	//game_objects.emplace_back(debug_boi);
-	//debug_boi = new TurretGun(wnd.getRenderer(), Vector3(3, 3, 0));
-	//game_objects.emplace_back(debug_boi);
-	//debug_boi = new TurretGun(wnd.getRenderer(), Vector3(4, 2, 0));
-	//game_objects.emplace_back(debug_boi);
-	//debug_boi = new TurretGun(wnd.getRenderer(), Vector3(15, 5, 0));
-	//game_objects.emplace_back(debug_boi);
-	//debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(7, 4, 0));
-	//game_objects.emplace_back(debug_boi);
-	//debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(15, 2, 0));
-	//game_objects.emplace_back(debug_boi);
-	debug_boi = new Picker(wnd.getRenderer());
-	game_objects.emplace_back(debug_boi);
+	// Spawn specific GOs
+	GameObject* init_go = new Picker(wnd.getRenderer());
+	game_objects.emplace_back(init_go);
+	init_go = new Trace(wnd.getRenderer(), Vector3(3, 3, 0), Vector3(4, 4, 1), Vector3(1, 0, 0));
+	game_objects.emplace_back(init_go);
 }
 
 App::~App()

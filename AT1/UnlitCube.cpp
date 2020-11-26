@@ -1,16 +1,8 @@
-#include "Cube.h"
+#include "UnlitCube.h"
 #include "Bindable_list.h"
 #include "CubeBase.h"
 
-Cube::Cube(Renderer& renderer,
-	std::mt19937& rng,
-	std::uniform_real_distribution<float>& adist,
-	std::uniform_real_distribution<float>& ddist,
-	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist,
-	std::uniform_real_distribution<float>& bdist,
-	DirectX::XMFLOAT3 material) :
-	TestObject(renderer, rng, adist, ddist, odist, rdist)
+UnlitCube::UnlitCube(Renderer& renderer, DirectX::XMFLOAT3 material)
 {
 	namespace dx = DirectX;
 
@@ -26,11 +18,11 @@ Cube::Cube(Renderer& renderer,
 
 		addStaticBind(std::make_unique<VertexBuffer>(renderer, model.vertices));
 
-		auto pvs = std::make_unique<VertexShader>(renderer, L"PhongVS.cso");
+		auto pvs = std::make_unique<VertexShader>(renderer, L"ColourVS.cso");
 		auto pvsbc = pvs->GetBytecode();
 		addStaticBind(std::move(pvs));
 
-		addStaticBind(std::make_unique<PixelShader>(renderer, L"PhongPS.cso"));
+		addStaticBind(std::make_unique<PixelShader>(renderer, L"ColourPS.cso"));
 
 		addStaticIndexBuffer(std::make_unique<IndexBuffer>(renderer, model.indices));
 
@@ -62,7 +54,6 @@ Cube::Cube(Renderer& renderer,
 		const std::vector<D3D11_INPUT_ELEMENT_DESC> ied =
 		{
 			{ "Position",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,D3D11_INPUT_PER_VERTEX_DATA,0 },
-			{ "Normal",0,DXGI_FORMAT_R32G32B32_FLOAT,0,D3D11_APPEND_ALIGNED_ELEMENT,D3D11_INPUT_PER_VERTEX_DATA,0 },
 		};
 		addStaticBind(std::make_unique<InputLayout>(renderer, ied, pvsbc));
 
@@ -78,21 +69,14 @@ Cube::Cube(Renderer& renderer,
 	struct PSMaterialConstant
 	{
 		dx::XMFLOAT3 color;
-		float specularIntensity = 0.6f;
-		float specularPower = 30.0f;
-		float padding[3];
+		float padding;
 	} colorConst;
 	colorConst.color = material;
 	addBind(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(renderer, colorConst, 1u));
 
 	// model deformation transform (per instance, not stored as bind)
-	dx::XMStoreFloat3x3(
-		&transform,
-		dx::XMMatrixScaling(1.0f, 1.0f, bdist(rng))
-	);
-}
-
-DirectX::XMMATRIX Cube::getXMTransform() const noexcept
-{
-	return DirectX::XMLoadFloat3x3(&transform) * TestObject::getXMTransform();
+	//dx::XMStoreFloat3x3(
+	//	&transform,
+	//	dx::XMMatrixScaling(1.0f, 1.0f, 1.0f)
+	//);
 }

@@ -53,6 +53,6 @@ void Turret::updateRot()
 	// calculate new rotation
 	Vector3 dir = target->getPos() - getPos();
 	dir.normalise();
-	float yaw = atan2(dir.x, dir.y);
-	setRot(Vector3(0, 0, yaw));
+	float yaw = atan2(dir.y, dir.x);
+	setRot(Vector3(yaw, 0, 0));
 }

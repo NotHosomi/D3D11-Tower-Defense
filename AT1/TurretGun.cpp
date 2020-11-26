@@ -1,4 +1,5 @@
 #include "TurretGun.h"
+#include "Trace.h"
 
 TurretGun::TurretGun(Renderer& renderer, Vector3 pos) :
 	Turret(renderer, pos)
@@ -19,6 +20,11 @@ void TurretGun::attack(GameData* _GD)
 	// simple attack for the simplest turret
 	target->damage(damage);
 	pickTarget(_GD);
+
+	// create laser visual
+	Vector3 start = getPos();
+	Trace* fx = new Trace(*_GD->renderer, start, target->getPos(), Vector3(1, 1, 0));
+	GameObject::create(fx);
 }
 
 // This turret attacks the closest enemy

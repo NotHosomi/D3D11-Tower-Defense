@@ -1,4 +1,5 @@
 #include "TurretLaser.h"
+#include "Trace.h"
 
 TurretLaser::TurretLaser(Renderer& renderer, Vector3 pos) :
 	Turret(renderer, pos)
@@ -18,6 +19,12 @@ void TurretLaser::attack(GameData* _GD)
 {
 	// Todo: shooting fx
 	target->damage(damage);
+
+	// create laser visual
+	Vector3 start = getPos();
+	start.z += getScale().z / 2.2; // fire from the top of the tower
+	Trace* fx = new Trace(*_GD->renderer, start, target->getPos(), Vector3(0, 1, 1));
+	GameObject::create(fx);
 }
 
 

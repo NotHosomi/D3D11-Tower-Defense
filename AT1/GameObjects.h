@@ -2,6 +2,7 @@
 
 #include "Marker.h"
 #include "Picker.h"
+#include "Trace.h"
 
 // Enemies
 #include "Enemy.h"

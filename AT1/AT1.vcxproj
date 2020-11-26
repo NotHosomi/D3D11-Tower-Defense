@@ -152,7 +152,7 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Bindable.cpp" />
     <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="UnlitCube.cpp" />
     <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -181,6 +181,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Topology.cpp" />
+    <ClCompile Include="Trace.cpp" />
     <ClCompile Include="TransformBuffer.cpp" />
     <ClCompile Include="Turret.cpp" />
     <ClCompile Include="TurretGun.cpp" />
@@ -196,7 +197,7 @@
     <ClInclude Include="Bindable_list.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cone.h" />
-    <ClInclude Include="Cube.h" />
+    <ClInclude Include="UnlitCube.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="CubeBase.h" />
     <ClInclude Include="Cylinder.h" />
@@ -236,6 +237,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Topology.h" />
+    <ClInclude Include="Trace.h" />
     <ClInclude Include="TransformBuffer.h" />
     <ClInclude Include="Turret.h" />
     <ClInclude Include="TurretGun.h" />
@@ -270,7 +272,7 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="ColourIndexPS.hlsl">
+    <FxCompile Include="ColourPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -278,7 +280,7 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.0</ShaderModel>
     </FxCompile>
-    <FxCompile Include="ColourIndexVS.hlsl">
+    <FxCompile Include="ColourVS.hlsl">
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
