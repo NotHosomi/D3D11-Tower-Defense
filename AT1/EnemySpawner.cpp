@@ -1,5 +1,6 @@
 #include "EnemySpawner.h"
 #include "Enemy.h"
+#include "Keyboard.h"
 
 EnemySpawner::EnemySpawner(PathCorner* first_stop_target)
 {
@@ -16,6 +17,18 @@ EnemySpawner::EnemySpawner(PathCorner* first_stop_target)
 
 void EnemySpawner::update(GameData* _GD)
 {
+	// probably a better way to do this than checking the static var in the non-static update func
+	if (wave_timer <= 0)
+	{
+		if (_GD->keys->getKeyDown(VK_SPACE))
+		{
+			wave_num++;
+			wave_timer = 5;
+		}
+		return;
+	}
+	wave_timer -= _GD->dt;
+
 	spawn_timer -= _GD->dt;
 	if (spawn_timer <= 0)
 	{

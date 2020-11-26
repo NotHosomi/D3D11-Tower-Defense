@@ -58,6 +58,8 @@ public:
 	Keyboard& operator=(const Keyboard&) = delete;
 	// keys
 	bool getKey(unsigned char keycode) const noexcept;
+	bool getKeyDown(unsigned char keycode) const noexcept;
+	bool getKeyUp(unsigned char keycode) const noexcept;
 	Event readKey() noexcept;
 	bool isKeyBufferEmpty() const noexcept;
 	void flushKeys() noexcept;
@@ -70,6 +72,7 @@ public:
 	void flush() noexcept;
 	void setAutorepeat(bool state) noexcept;
 	bool isAutorepeatEnabled() const noexcept;
+	void endFrame() noexcept;
 private:
 	void onKeyPressed(unsigned char keycode) noexcept;
 	void onKeyReleased(unsigned char keycode) noexcept;
@@ -83,6 +86,7 @@ private:
 	bool autorepeatEnabled = false;
 
 	std::bitset<NUM_KEYS> keys;
+	std::bitset<NUM_KEYS> keys_prev;
 	std::queue<Event> key_buffer;
 	std::queue<char> char_buffer;
 };

@@ -175,6 +175,9 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="TurretLaser.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Picker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -333,6 +336,9 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="TurretLaser.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Picker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

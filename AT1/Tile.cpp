@@ -55,3 +55,13 @@ Tile::Tile(Renderer& renderer, std::string texture)
 	addBind(std::make_unique<Texture>(renderer, Surface::FromFile("Images\\" + texture + ".png")));
 	addBind(std::make_unique<TransformBuffer>(renderer, *this));
 }
+
+Turret* Tile::fetchOccupier()
+{
+	return occupier;
+}
+
+void Tile::setOccupier(Turret* new_tower)
+{
+	occupier = new_tower;
+}

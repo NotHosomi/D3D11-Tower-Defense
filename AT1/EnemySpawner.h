@@ -9,6 +9,7 @@ public:
 	EnemySpawner(PathCorner* first_stop_target);
 
 	void update(GameData* _GD) override;
+
 private:
 	const float MAX_TIMER = 0.7;
 	const float MIN_TIMER = 0.1f;
@@ -19,4 +20,8 @@ private:
 
 	PathCorner* first_target = nullptr;
 	Vector3 spawn_pos;
+	
+	// Wave control
+	float wave_timer;
+	int wave_num;
 };

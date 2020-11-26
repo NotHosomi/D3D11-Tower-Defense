@@ -76,3 +76,18 @@ PathCorner* Grid::getFirstStopTarget()
 {
 	return &waypoints.back();
 }
+
+Tile* Grid::getTile(Vector3 coords)
+{
+	return getTile(static_cast<int>(coords.x), static_cast<int>(coords.y));
+}
+
+Tile* Grid::getTile(int x, int y)
+{
+	if (x < 0 || y < 0 ||
+		x >= GRID_WIDTH || y >= GRID_HEIGHT)
+	{
+		return nullptr;
+	}
+	return &tiles[x][y];
+}

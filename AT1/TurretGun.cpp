@@ -11,7 +11,7 @@ TurretGun::TurretGun(Renderer& renderer, Vector3 pos) :
 
 	damage = 4;
 	attack_time = 0.2;
-	range = 4;
+	range = 4.5;
 }
 
 void TurretGun::attack(GameData* _GD)

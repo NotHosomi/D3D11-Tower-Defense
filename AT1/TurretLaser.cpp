@@ -11,7 +11,7 @@ TurretLaser::TurretLaser(Renderer& renderer, Vector3 pos) :
 
 	damage = 50;
 	attack_time = 1;
-	range = 6;
+	range = 6.5;
 }
 
 void TurretLaser::attack(GameData* _GD)
@@ -34,6 +34,13 @@ void TurretLaser::pickTarget(GameData* _GD)
 		if (enemy == nullptr)
 		{
 			continue;
+		}
+
+		Vector3 diff = enemy->getPos() - getPos();
+		float dist = diff.magnitude();
+		if (dist > range)
+		{
+			return;
 		}
 
 		int hp = enemy->getMaxHp();

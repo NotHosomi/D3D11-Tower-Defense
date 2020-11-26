@@ -4,5 +4,7 @@ struct GameData
 {
 	float dt;
 	std::vector<class GameObject*>* game_objects;
-	Renderer* renderer;
+	class Grid* world;
+	class Renderer* renderer;
+	class Keyboard* keys;
 };

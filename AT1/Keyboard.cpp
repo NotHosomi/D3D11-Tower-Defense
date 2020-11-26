@@ -24,6 +24,16 @@ bool Keyboard::getKey(unsigned char keycode) const noexcept
 	return keys[keycode];
 }
 
+bool Keyboard::getKeyDown(unsigned char keycode) const noexcept
+{
+	return keys[keycode] && keys[keycode] != keys_prev[keycode];
+}
+
+bool Keyboard::getKeyUp(unsigned char keycode) const noexcept
+{
+	return !keys[keycode] && keys[keycode] != keys_prev[keycode];
+}
+
 Keyboard::Event Keyboard::readKey() noexcept
 {
 	if (key_buffer.size() > 0u)
@@ -80,6 +90,11 @@ void Keyboard::setAutorepeat(bool state) noexcept
 bool Keyboard::isAutorepeatEnabled() const noexcept
 {
 	return autorepeatEnabled;
+}
+
+void Keyboard::endFrame() noexcept
+{
+	keys_prev = keys;
 }
 
 void Keyboard::onKeyPressed(unsigned char keycode) noexcept

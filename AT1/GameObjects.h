@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Marker.h"
+#include "Picker.h"
 
 // Enemies
 #include "Enemy.h"

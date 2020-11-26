@@ -26,21 +26,26 @@ App::App() :
 	wnd.getRenderer().setCamera(DirectX::XMMatrixTranslation(0.0f, 0.0f, 20.0f));
 
 	_GD.game_objects = &game_objects;
+	_GD.renderer = &wnd.getRenderer();
+	_GD.keys = &wnd.kbd;
 
 	light.setPos(10, 10, 3);
 	world = new Grid(wnd.getRenderer());
+	_GD.world = world;
 
-	Turret* debug_boi = new TurretGun(wnd.getRenderer(), Vector3(4, 4, 0));
-	game_objects.emplace_back(debug_boi);
-	debug_boi = new TurretGun(wnd.getRenderer(), Vector3(3, 3, 0));
-	game_objects.emplace_back(debug_boi);
-	debug_boi = new TurretGun(wnd.getRenderer(), Vector3(4, 2, 0));
-	game_objects.emplace_back(debug_boi);
-	debug_boi = new TurretGun(wnd.getRenderer(), Vector3(15, 5, 0));
-	game_objects.emplace_back(debug_boi);
-	debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(7, 4, 0));
-	game_objects.emplace_back(debug_boi);
-	debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(15, 2, 0));
+	GameObject* debug_boi;// = new TurretGun(wnd.getRenderer(), Vector3(4, 4, 0));
+	//game_objects.emplace_back(debug_boi);
+	//debug_boi = new TurretGun(wnd.getRenderer(), Vector3(3, 3, 0));
+	//game_objects.emplace_back(debug_boi);
+	//debug_boi = new TurretGun(wnd.getRenderer(), Vector3(4, 2, 0));
+	//game_objects.emplace_back(debug_boi);
+	//debug_boi = new TurretGun(wnd.getRenderer(), Vector3(15, 5, 0));
+	//game_objects.emplace_back(debug_boi);
+	//debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(7, 4, 0));
+	//game_objects.emplace_back(debug_boi);
+	//debug_boi = new TurretLaser(wnd.getRenderer(), Vector3(15, 2, 0));
+	//game_objects.emplace_back(debug_boi);
+	debug_boi = new Picker(wnd.getRenderer());
 	game_objects.emplace_back(debug_boi);
 }
 
@@ -48,10 +53,19 @@ App::~App()
 {
 	for (auto& go : game_objects)
 	{
-		delete go;
-		go = nullptr;
+		if (go)
+		{
+			delete go;
+			go = nullptr;
+		}
 	}
 	game_objects.clear();
+
+	if (world)
+	{
+		delete world;
+		world = nullptr;
+	}
 }
 
 int App::run()
@@ -151,6 +165,7 @@ void App::tick()
 		game_objects.emplace_back(ptr);
 	}
 
+	wnd.kbd.endFrame();
 	// RENDER
 	wnd.getRenderer().wipe(0.07f, 0.0f, 0.12f);
 	wnd.getRenderer().setCamera(cam.getMatrix());
