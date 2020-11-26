@@ -4,14 +4,7 @@
 #include <array>
 
 
-Pyramid::Pyramid(Renderer& renderer, std::mt19937& rng,
-	std::uniform_real_distribution<float>& adist,
-	std::uniform_real_distribution<float>& ddist,
-	std::uniform_real_distribution<float>& odist,
-	std::uniform_real_distribution<float>& rdist,
-	std::uniform_int_distribution<int>& tdist)
-	:
-	TestObject(renderer, rng, adist, ddist, odist, rdist)
+Pyramid::Pyramid(Renderer& renderer, Vector3 peak_colour, Vector3 base_colour)
 {
 	namespace dx = DirectX;
 
@@ -42,7 +35,7 @@ Pyramid::Pyramid(Renderer& renderer, std::mt19937& rng,
 		addStaticBind(std::make_unique<PixelConstantBuffer<PSMaterialConstant>>(renderer, colorConst, 1u));
 	}
 
-	// Generate geometry per-instance, non-static
+	// Verticies unique for each instance, allows for different colours
 	struct Vertex
 	{
 		dx::XMFLOAT3 pos;
@@ -50,16 +43,18 @@ Pyramid::Pyramid(Renderer& renderer, std::mt19937& rng,
 		std::array<char, 4> color;
 		char padding;
 	};
-	const auto tesselation = tdist(rng);
-	auto model = Cone::MakeTesselatedIndependentFaces<Vertex>(tesselation);
-	// set vertex colors for mesh (tip red blending to blue base)
+	auto model = Cone::MakeTesselatedIndependentFaces<Vertex>(4);
 	for (auto& v : model.vertices)
 	{
-		v.color = { (char)255,(char)255,(char)10 };
+		v.color = { static_cast<char>(peak_colour.x),
+			static_cast<char>(peak_colour.y),
+			static_cast<char>(peak_colour.z)};
 	}
-	for (int i = 0; i < tesselation; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		model.vertices[i * 3].color = { (char)255,(char)10,(char)10 };
+		model.vertices[i * 3].color = { static_cast<char>(base_colour.x),
+			static_cast<char>(base_colour.y),
+			static_cast<char>(base_colour.z) };
 	}
 	model.SetNormalsIndependentFlat();
 

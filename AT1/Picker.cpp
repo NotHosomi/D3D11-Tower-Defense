@@ -4,6 +4,7 @@
 #include "Keyboard.h"
 #include "TurretGun.h"
 #include "TurretLaser.h"
+#include "TurretMage.h"
 
 #include "SkinnedCube.h"
 #include "Maths.h"
@@ -70,16 +71,16 @@ void Picker::update(GameData* _GD)
 			target->setOccupier(new_turret);
 		}
 	}
-	//else if (_GD->keys->getKeyDown('R'))
-	//{
-	//	Tile* target = _GD->world->getTile(getPos());
-	//	if (target->fetchOccupier() == nullptr)
-	//	{
-	//		auto new_turret = new TurretMage(*_GD->renderer, getPos());
-	//		GameObject::create(new_turret);
-	//		target->setOccupier(new_turret);
-	//	}
-	//}
+	else if (_GD->keys->getKeyDown('R'))
+	{
+		Tile* target = _GD->world->getTile(getPos());
+		if (target->fetchOccupier() == nullptr)
+		{
+			auto new_turret = new TurretMage(*_GD->renderer, getPos());
+			GameObject::create(new_turret);
+			target->setOccupier(new_turret);
+		}
+	}
 
 	if (_GD->keys->getKeyDown('F'))
 	{

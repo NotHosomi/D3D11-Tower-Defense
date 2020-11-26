@@ -1,13 +1,8 @@
 #pragma once
-#include "TestObject.h"
+#include "Primitive.h"
 
-class Pyramid : public TestObject<Pyramid>
+class Pyramid : public Primitive<Pyramid>
 {
 public:
-	Pyramid(Renderer& renderer, std::mt19937& rng,
-		std::uniform_real_distribution<float>& adist,
-		std::uniform_real_distribution<float>& ddist,
-		std::uniform_real_distribution<float>& odist,
-		std::uniform_real_distribution<float>& rdist,
-		std::uniform_int_distribution<int>& tdist);
+	Pyramid(Renderer& renderer, Vector3 peak_colour, Vector3 base_colour);
 };

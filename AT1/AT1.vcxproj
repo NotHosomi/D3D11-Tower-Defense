@@ -152,6 +152,9 @@
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Bindable.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="TurretMage.cpp" />
     <ClCompile Include="UnlitCube.cpp" />
     <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="Drawable.cpp" />
@@ -197,6 +200,9 @@
     <ClInclude Include="Bindable_list.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cone.h" />
+    <ClInclude Include="Explosion.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="TurretMage.h" />
     <ClInclude Include="UnlitCube.h" />
     <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="CubeBase.h" />
