@@ -4,9 +4,9 @@
 
 Explosion::Explosion(Renderer& renderer, Vector3 pos, int level)
 {
-	model = new Ball(renderer, 5, 5);
+	model = new Ball(renderer, 16, 16);
 	setPos(pos);
-	model->setScale(Vector3(2, 2, 2) * EXPLOSION_RADIUS);
+	model->setScale(Vector3(2, 2, 2));
 
 	dmg = EXPLOSION_BASE_DAMAGE + LVL_DMG_BONUS * level;
 }
