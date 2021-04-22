@@ -10,7 +10,7 @@ TurretMage::TurretMage(Renderer& renderer, Vector3 pos) :
 	setPos(pos);
 	model->setScale(Vector3(0.5, 0.5, 1));
 
-	damage = 4;
+	damage = 10;
 	attack_time = 3;
 	range = 5.5;
 }

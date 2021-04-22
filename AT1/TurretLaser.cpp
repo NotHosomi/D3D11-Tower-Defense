@@ -11,7 +11,7 @@ TurretLaser::TurretLaser(Renderer& renderer, Vector3 pos) :
 	model->setScale(Vector3(0.5f, 0.5f, 2));
 
 	damage = 50;
-	attack_time = 1;
+	attack_time = 1.2f;
 	range = 6.5;
 }
 
@@ -28,7 +28,7 @@ void TurretLaser::attack(GameData* _GD)
 }
 
 
-// This turret attacks the closest enemy
+// This turret attacks the enemy with highest max health
 void TurretLaser::pickTarget(GameData* _GD)
 {
 	int highest_max = 0;
