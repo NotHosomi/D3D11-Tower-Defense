@@ -14,7 +14,7 @@ private:
 	static constexpr float EXPLOSION_BASE_DAMAGE = 40;
 	float dmg;
 
-	static constexpr float LIFETIME = 0.1f; // ms
+	static constexpr float LIFETIME = 0.1f;
 	float age = 0;
 };
 
