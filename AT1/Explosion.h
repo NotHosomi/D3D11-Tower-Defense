@@ -13,5 +13,8 @@ private:
 	static constexpr float LVL_DMG_BONUS = 10;
 	static constexpr float EXPLOSION_BASE_DAMAGE = 40;
 	float dmg;
+
+	static constexpr float LIFETIME = 0.1f; // ms
+	float age = 0;
 };
 

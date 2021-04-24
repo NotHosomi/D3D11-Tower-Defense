@@ -23,7 +23,7 @@ void Projectile::update(GameData* _GD)
 	{
 		dir = dist;
 		GameObject::destroy(this);
-		setPos(getPos() + dir);
+		setPos(target);
 		GameObject::create(new Explosion(*_GD->renderer, getPos(), lvl));
 		return;
 	}

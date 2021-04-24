@@ -13,6 +13,11 @@ Explosion::Explosion(Renderer& renderer, Vector3 pos, int level)
 
 void Explosion::update(GameData* _GD)
 {
+	age += _GD->dt;
+	if (age < LIFETIME)
+		return;
+
+
 	// damage enemies
 	for (GameObject* go : *_GD->game_objects)
 	{
